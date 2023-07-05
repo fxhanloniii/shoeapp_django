@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h1>Are you sure you want to delete {{ shoe.name }}?</h1>
+  
+    <form method="post" class="confirmation-form">
+      {% csrf_token %}
+      
+      <div class="buttons">
+        <input type="submit" value="Confirm" class="button is-danger">
+        <a href="{% url 'shoe_detail' shoe.pk %}" class="button">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

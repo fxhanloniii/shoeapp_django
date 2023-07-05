@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block content %}
+    
+    <div class="shoe-list">
+        {% for shoe in shoes %}
+            <a href="{% url 'shoe_detail' shoe.pk %}">
+                <div class="card">
+                <div class="card-image">
+                    <div>
+                    <img src="{{ shoe.image_url }}" alt="{{ shoe.name }}" />
+                    </div>
+                </div>
+                <div class="card-header">
+                    <p class="card-header-title">{{ shoe.name }}</p>
+                </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

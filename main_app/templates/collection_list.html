@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    My Collection
+{% endblock %}
+
+{% block content %}
+    <h1 class="form-title">My Shoe Collection</h1>
+    <div class="shoe-list">
+        {% for shoe in collection %}
+            <a href="{% url 'shoe_detail' shoe.pk %}">
+                <div class="card">
+                <div class="card-image">
+                    <div>
+                    <img src="{{ shoe.image_url }}" alt="{{ shoe.name }}" />
+                    </div>
+                </div>
+                <div class="card-header">
+                    <p class="card-header-title">{{ shoe.name }}</p>
+                </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

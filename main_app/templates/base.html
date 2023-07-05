@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}" />
+    <script src="{% static 'scripts/main.js' %}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <title>ShoeApp - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="{% url 'home' %}" class="navbar-brand-item">
+                <img class="logo" src="{% static 'images/shoe.png' %}" alt="Logo">
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'home' %}" class="navbar-item">Home</a>
+                    <a href="{% url 'collection' %}" class="navbar-item">My Collection</a>
+                    <a href="{% url 'shoe_create' %}" class="navbar-item">Add a Shoe</a>
+                    <a href="{% url 'logout' %}" class="navbar-item">Log Out</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="navbar-item">Log In</a>
+                    <a href="{% url 'signup' %}" class="navbar-item">Sign Up</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+    
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
