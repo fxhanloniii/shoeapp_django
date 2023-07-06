@@ -41,7 +41,7 @@ class ShoeCreate(CreateView):
         return super().form_valid(form)
     
     def get_success_url(self):
-        return reverse('home', kwargs={'pk': self.object.pk})
+        return reverse('shoe_detail', kwargs={'pk': self.object.pk})
 
 
 class ShoeDetail(DetailView):
@@ -75,7 +75,7 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
+            return redirect("collection")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
